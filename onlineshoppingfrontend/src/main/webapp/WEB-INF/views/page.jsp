@@ -31,7 +31,7 @@
 <link href="${vendor}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Bootstrap Sandstone CSS -->
-<link href="${css}/bootstrap-sandstone-theme.css" rel="stylesheet">
+<link href="${css}/bootstrap-cerulean-theme.css" rel="stylesheet">
 
 
 <!-- Custom styles for this template -->
@@ -63,8 +63,8 @@
 			</c:if>
 
 			<!-- loading the list products content -->
-			<c:if test="${userClickHome==true}">
-				<%@include file="home.jsp"%>
+			<c:if test="${userClickAllProducts==true or userClickCategoryProducts==true}">
+				<%@include file="listProducts.jsp"%>
 			</c:if>
 		</div>
 		<!-- Footer -->
