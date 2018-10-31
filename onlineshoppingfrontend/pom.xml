@@ -11,7 +11,7 @@
 
 	<properties>
 		<spring.security.version>4.2.2.RELEASE</spring.security.version>
-		<spring.version>4.3.14.RELEASE</spring.version>
+		<spring.version>4.3.6.RELEASE</spring.version>
 	</properties>
 	<dependencies>
 		<!-- Link backend project -->
