@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 
 public class HibernateConfig {
-	private final static String DATABASE_URL = " jdbc:h2:tcp://localhost/~/onlineshoppingwebsite";
+	private final static String DATABASE_URL = "jdbc:h2:tcp://localhost/~/onlineshoppingwebsite";
 	private final static String DATABASE_DRIVER = "org.h2.Driver";
 	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
 	private final static String DATABASE_USERNAME = "sa";
@@ -39,10 +39,10 @@ public class HibernateConfig {
 	@Bean
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
-		
+
 		builder.addProperties(getHibernateProperties());
-		builder.scanPackages("com.itn.onlineshoppingbackend.dto");
-		
+		builder.scanPackages("com.itn.onlineshoppingbackend");
+
 		return builder.buildSessionFactory();
 	}
 
@@ -56,11 +56,11 @@ public class HibernateConfig {
 
 		return properties;
 	}
-	
-	//TransactionManager bean
+
+	// TransactionManager bean
 	@Bean
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-		HibernateTransactionManager transactionManager=new HibernateTransactionManager();
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 		return transactionManager;
-	} 
+	}
 }
