@@ -7,6 +7,7 @@
 <spring:url var="css" value="/resources/css" />
 <spring:url var="vendor" value="/resources/vendor" />
 <spring:url var="js" value="/resources/js" />
+<spring:url var="images" value="/resources/images" />
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
@@ -25,6 +26,7 @@
 
 <script>
 	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -33,6 +35,11 @@
 <!-- Bootstrap Sandstone CSS -->
 <link href="${css}/bootstrap-cerulean-theme.css" rel="stylesheet">
 
+<!-- Bootstrap DataTables CSS -->
+<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
+
+<link href="${css}/open-iconic/font/css/open-iconic-bootstrap.css"
+	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${css}/shop-homepage.css" rel="stylesheet">
@@ -63,9 +70,16 @@
 			</c:if>
 
 			<!-- loading the list products content -->
-			<c:if test="${userClickAllProducts==true or userClickCategoryProducts==true}">
+			<c:if
+				test="${userClickAllProducts==true or userClickCategoryProducts==true}">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
+
+			<!-- loading when user clicks show products-->
+			<c:if test="${userClickShowProduct==true}">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
 		</div>
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
@@ -73,6 +87,13 @@
 		<!-- Bootstrap core JavaScript -->
 		<script src="${vendor}/jquery/jquery.min.js"></script>
 		<script src="${vendor}/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!--DataTable Plugin-->
+		<script src="${js}/jquery.dataTables.js"></script>
+
+		<!--DataTable Bootstrap Script -->
+		<script src="${js}/dataTables.bootstrap4.js"></script>
+
 
 		<!--  Self coded java script -->
 		<script src="${js}/myapp.js"></script>
