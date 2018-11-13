@@ -80,6 +80,11 @@
 				<%@include file="singleProduct.jsp"%>
 			</c:if>
 			
+			<!-- loading when user clicks manage products-->
+			<c:if test="${userClickManageProducts==true}">
+				<%@include file="manageProducts.jsp"%>
+			</c:if>
+			
 		</div>
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
@@ -93,6 +98,12 @@
 
 		<!--DataTable Bootstrap Script -->
 		<script src="${js}/dataTables.bootstrap4.js"></script>
+		
+		<!--DataTable Bootstrap Script -->
+		<script src="${js}/jquery.validate.js"></script>
+
+		<!--DataTable Bootbox Script -->
+		<script src="${js}/bootbox.min.js"></script>
 
 
 		<!--  Self coded java script -->
