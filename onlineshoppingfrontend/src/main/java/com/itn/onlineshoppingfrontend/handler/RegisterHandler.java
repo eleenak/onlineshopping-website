@@ -3,6 +3,7 @@ package com.itn.onlineshoppingfrontend.handler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.itn.onlineshoppingbackend.dao.UserDAO;
@@ -16,6 +17,9 @@ public class RegisterHandler {
 	
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	public RegisterModel init() {
 		return new RegisterModel();
@@ -49,11 +53,11 @@ public class RegisterHandler {
 	} 
 	
 	
-	public String saveAll(RegisterModel model) {
+	public String saveAll(RegisterModel registerModel) {
 		String transitionValue="success";
 		
 		//fetch the user
-		User user=model.getUser();
+		User user=registerModel.getUser();
 		
 		if(user.getRole().equals("USER")) {
 			Cart cart=new Cart();
@@ -61,11 +65,14 @@ public class RegisterHandler {
 			user.setCart(cart);
 		}
 		
+		//encode the password
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		
 		//save the user
 		userDAO.addUser(user);
 		
 		// get the address
-		Address billing=model.getBilling();
+		Address billing=registerModel.getBilling();
 		billing.setUserId(user.getId());
 		billing.setBilling(true);
 		

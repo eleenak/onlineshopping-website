@@ -44,7 +44,10 @@
 				</c:otherwise>
 			</c:choose>
 			
+			
+			<security:authorize access="hasAuthority('USER')">
 			<c:choose>
+			
 				<c:when test="${product.quantity<1}">
 				<a href="javascript:void(0)" class="btn btn-disabled"><strike><span class="oi oi-cart">Add to Cart</span></strike></a>
 					<h6>Qty. Available: <span style="color:red">Out of stock!</span></h6>
@@ -54,6 +57,12 @@
 					<h6>Qty. Available: ${product.quantity}</h6>
 				</c:otherwise>
 			</c:choose>
+			</security:authorize>
+			<security:authorize access="hasAuthority('ADMIN')">
+			<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-warning"><span class="oi oi-cart"><span class="oi oi-pencil">Edit</span></span></a>
+					<h6>Qty. Available: ${product.quantity}</h6>
+			
+			</security:authorize>
 			
 				
 			

@@ -37,32 +37,35 @@
 
 			<div class="row">
 				<div class="col-xs-12">
-					<table id="productListTable"
-						class="table table-striped table-bordered">
-
-						<thead>
-							<th></th>
-							<th>Name</th>
-							<th>Brand</th>
-							<th>Price</th>
-							<th>Qty. Available</th>
-							<th></th>
-
-						</thead>
+					<div class="container-fluid">
+						<div class="table-responsive">
 						
-						<tfoot>
-							<th></th>
-							<th>Name</th>
-							<th>Brand</th>
-							<th>Price</th>
-							<th>Qty. Available</th>
-							<th></th>
+							<table id="productListTable"
+								class="table table-striped table-bordered">
 
-						</tfoot>
-						
-						
+								<thead>
+									<th></th>
+									<th>Name</th>
+									<th>Brand</th>
+									<th>Price</th>
+									<th>Qty. Available</th>
+									<th></th>
 
-					</table>
+								</thead>
+
+								<tfoot>
+									<th></th>
+									<th>Name</th>
+									<th>Brand</th>
+									<th>Price</th>
+									<th>Qty. Available</th>
+									<th></th>
+
+								</tfoot>
+							</table>
+						</div>
+
+					</div>
 				</div>
 			</div>
 
